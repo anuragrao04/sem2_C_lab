@@ -61,7 +61,7 @@ NODE *orderedSLL(NODE *head, int ele) {
 
 void display(NODE *head) {
   if (head == NULL) {
-    printf("Empty List\n");
+    printf("Empty List");
   } else {
     while (head != NULL) {
       printf("%d ", head->info);
@@ -78,4 +78,17 @@ NODE *freeList(NODE *head) {
     head = temp;
   }
   return NULL;
+}
+
+NODE *merge(NODE *head1, NODE *head2, NODE *head3) {
+  while (head1 != NULL) {
+    head3 = orderedSLL(head3, head1->info);
+    head1 = head1->next;
+  }
+  while (head2 != NULL) {
+    head3 = orderedSLL(head3, head2->info);
+    head2 = head2->next;
+  }
+
+  return head3;
 }
